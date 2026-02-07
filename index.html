@@ -1,0 +1,106 @@
+!DOCTYPE html
+html lang=en
+head
+  meta charset=UTF-8 
+  meta name=viewport content=width=device-width, initial-scale=1.0
+  titleValentinetitle
+
+  style
+    body {
+      margin 0;
+      height 100vh;
+      font-family Arial, sans-serif;
+      background linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display flex;
+      justify-content center;
+      align-items center;
+    }
+
+    .card {
+      background white;
+      padding 40px;
+      border-radius 20px;
+      text-align center;
+      box-shadow 0 20px 40px rgba(0,0,0,0.2);
+      position relative;
+      width 320px;
+    }
+
+    h1 {
+      margin-bottom 30px;
+    }
+
+    button {
+      padding 12px 24px;
+      font-size 18px;
+      border none;
+      border-radius 12px;
+      cursor pointer;
+      transition 0.2s ease;
+    }
+
+    #yes {
+      background #ff4d6d;
+      color white;
+      margin-right 10px;
+    }
+
+    #no {
+      background #ccc;
+      position absolute;
+    }
+
+    .success {
+      font-size 22px;
+      color #ff4d6d;
+    }
+  style
+head
+body
+
+  div class=card id=card
+    h1Will you be my Valentine 💕h1
+    button id=yesYesbutton
+    button id=noNobutton
+  div
+
+  script
+    const noBtn = document.getElementById(no);
+    const yesBtn = document.getElementById(yes);
+    const card = document.getElementById(card);
+
+    function moveNoButton() {
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = cardRect.width - btnRect.width;
+      const maxY = cardRect.height - btnRect.height;
+
+      const x = Math.random()  maxX;
+      const y = Math.random()  maxY;
+
+      noBtn.style.left = x + px;
+      noBtn.style.top = y + px;
+    }
+
+     Desktop hover
+    noBtn.addEventListener(mouseenter, moveNoButton);
+
+     Mobile tap
+    noBtn.addEventListener(touchstart, moveNoButton);
+
+    yesBtn.addEventListener(click, () = {
+      card.innerHTML = `
+        div class=success
+          💖 YAY 💖brbr
+          Best Valentine ever 😌
+        div
+      `;
+    });
+
+     Initial random position
+    moveNoButton();
+  script
+
+body
+html
