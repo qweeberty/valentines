@@ -41,10 +41,28 @@
       transition: 0.2s ease;
     }
 
+    /* 💖 YES BUTTON — subtle heart pulse */
     #yes {
       background: #ff4d6d;
       color: white;
       margin-right: 10px;
+      animation: pulse 1.8s infinite;
+      box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 20px rgba(255, 77, 109, 0.9);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
+      }
     }
 
     #no {
@@ -53,15 +71,15 @@
     }
 
     .success {
-      font-size: 22px;
+      font-size: 20px;
       color: #ff4d6d;
+      line-height: 1.4;
     }
 
     .confetti {
       position: fixed;
       width: 10px;
       height: 10px;
-      background-color: red;
       top: -10px;
       animation: fall 3s linear forwards;
       z-index: 1;
@@ -114,7 +132,6 @@
           2 + Math.random() * 2 + "s";
 
         document.body.appendChild(confetti);
-
         setTimeout(() => confetti.remove(), 4000);
       }
     }
@@ -126,8 +143,9 @@
       launchConfetti();
       card.innerHTML = `
         <div class="success">
-          💖 YAY Andrea 💖<br><br>
-          Best Valentine ever 😌
+          Woo! 💖<br><br>
+          Thank you Andrea!<br>
+          This will be the best Valentine’s ever 😌
         </div>
       `;
     });
