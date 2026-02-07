@@ -15,17 +15,58 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      position: relative;
+    }
+
+    /* 💗 Subtle background pattern */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 0 8px, transparent 9px),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.06) 0 6px, transparent 7px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.05) 0 7px, transparent 8px);
+      background-size: 120px 120px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .card {
       background: white;
       padding: 40px;
-      border-radius: 20px;
+      border-radius: 22px;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      width: 340px;
       position: relative;
-      width: 320px;
       z-index: 2;
+
+      /* 💖 Border + glow */
+      border: 2px solid #e85b73;
+      box-shadow:
+        0 0 20px rgba(232, 91, 115, 0.35),
+        0 20px 40px rgba(0,0,0,0.2);
+
+      /* 💓 Slow heart pulse */
+      animation: cardPulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes cardPulse {
+      0% {
+        transform: scale(1);
+        box-shadow:
+          0 0 20px rgba(232, 91, 115, 0.35),
+          0 20px 40px rgba(0,0,0,0.2);
+      }
+      50% {
+        transform: scale(1.02);
+        box-shadow:
+          0 0 28px rgba(232, 91, 115, 0.5),
+          0 24px 44px rgba(0,0,0,0.25);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
     h1 {
@@ -41,28 +82,18 @@
       transition: 0.2s ease;
     }
 
-    /* 💖 YES BUTTON — subtle heart pulse */
     #yes {
       background: #ff4d6d;
       color: white;
       margin-right: 10px;
       animation: pulse 1.8s infinite;
-      box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
+      box-shadow: 0 0 14px rgba(255, 77, 109, 0.6);
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
-      }
-      50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 20px rgba(255, 77, 109, 0.9);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
-      }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
     }
 
     #no {
@@ -72,8 +103,8 @@
 
     .success {
       font-size: 20px;
-      color: #ff4d6d;
-      line-height: 1.4;
+      color: #e85b73;
+      line-height: 1.5;
     }
 
     .confetti {
@@ -143,10 +174,8 @@
       launchConfetti();
       card.innerHTML = `
         <div class="success">
-          Woo! <br><br>
-          Thank you Andrea!<br>
-          This will be the best Valentine’s ever 😌<br>
-          I love you 💖
+          Thank you, my beautiful princess.<br>
+          I can’t wait to spend Valentine’s with you. 💖
         </div>
       `;
     });
@@ -156,4 +185,3 @@
 
 </body>
 </html>
-
